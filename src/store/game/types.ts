@@ -1,9 +1,9 @@
 import { UPDATE_STAGE } from './actionTypes'
 
 export enum GameStage {
-  INTRO,
-  BATTLE,
-  GAME_OVER,
+  INTRO = 'INTRO',
+  BATTLE = 'BATTLE',
+  GAME_OVER = 'GAME_OVER',
 }
 
 export type GameState = {

@@ -1,24 +1,24 @@
-import React, { useState } from 'react'
-import { HealthBar } from '..'
-import Battleground from '../Battleground'
+import React, { useEffect, useState } from 'react'
 import styles from './index.module.scss'
+import { gameStageToViewMap } from './constants'
+import { useGameStage } from '../../store/game/selectors'
 
 const App = () => {
-  const [health, setHealth] = useState(Math.random())
+  const gameStage = useGameStage()
+  const [View, setView] = useState(gameStageToViewMap[gameStage])
 
-  const onButtonClick = () => {
-    setHealth(Math.random())
-  }
+  useEffect(() => {
+    setView(gameStageToViewMap[gameStage])
+  }, [gameStage])
 
   return (
     <div className={`${styles.App} rpgui-container framed-golden`}>
       <div className={styles.AppContainer}>
-        <HealthBar value={health} />
-        <button className="rpgui-button" type="button" onClick={onButtonClick}>
-          Set random health
-        </button>
+        <h1>DICE HARD</h1>
 
-        <Battleground />
+        <hr className="golden" />
+
+        <View />
       </div>
     </div>
   )

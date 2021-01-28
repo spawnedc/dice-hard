@@ -2,10 +2,11 @@ import React, { useEffect, useRef } from 'react'
 import RPGUI from '../../utils/RPGUI'
 
 interface HealthBarProps {
+  className?: string
   value: number
 }
 
-const HealthBar = ({ value }: HealthBarProps) => {
+const HealthBar = ({ className, value }: HealthBarProps) => {
   const healthBarRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -15,7 +16,7 @@ const HealthBar = ({ value }: HealthBarProps) => {
   return (
     <div
       ref={healthBarRef}
-      className="rpgui-progress red"
+      className={`rpgui-progress red ${className}`}
       data-value={value}
     ></div>
   )

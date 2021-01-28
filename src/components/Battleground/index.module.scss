@@ -14,5 +14,16 @@
     position: absolute;
     top: 0;
     width: 100%;
+    z-index: -1;
   }
+}
+
+.HealthBars {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+}
+
+.HealthBar {
+  width: 48%;
 }
