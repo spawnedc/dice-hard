@@ -1,0 +1,15 @@
+.GameOver {
+  text-align: center;
+}
+
+.GameOverText {
+  font-size: 2rem;
+
+  .winner {
+    color: green;
+  }
+
+  .loser {
+    color: red;
+  }
+}

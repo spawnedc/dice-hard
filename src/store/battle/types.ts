@@ -1,4 +1,4 @@
-import { NEW_ROUND } from './actionTypes'
+import { NEW_ROUND, RESET_BATTLE } from './actionTypes'
 
 export type DiceRoll = {
   rolls: number[]
@@ -10,6 +10,9 @@ export type Round = {
   playerHealth: number
   enemyRoll: DiceRoll
   enemyHealth: number
+  winner?: string
+  loser?: string
+  isDraw: boolean
 }
 
 export type BattleState = {
@@ -21,4 +24,8 @@ export type NewRound = {
   payload: Round
 }
 
-export type GameActions = NewRound
+export type ResetBattle = {
+  type: typeof RESET_BATTLE
+}
+
+export type BattleActions = NewRound | ResetBattle

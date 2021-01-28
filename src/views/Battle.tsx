@@ -4,6 +4,8 @@ import { enemy, player } from '../constants'
 import { addNewRound } from '../store/battle/actions'
 import { useLastRound } from '../store/battle/selectors'
 import { Round } from '../store/battle/types'
+import { updateGameStage } from '../store/game/actions'
+import { GameStage } from '../store/game/types'
 import rollDice from '../utils/rollDice'
 
 const Battle = () => {
@@ -15,13 +17,22 @@ const Battle = () => {
     const enemyRoll = rollDice()
     let playerHealth = lastRound?.playerHealth || player.health
     let enemyHealth = lastRound?.enemyHealth || enemy.health
+    let winner: string | undefined
+    let loser: string | undefined
+    let isDraw = false
 
     const damage = Math.abs(playerRoll.total - enemyRoll.total)
 
     if (playerRoll.total > enemyRoll.total) {
       enemyHealth -= damage
+      winner = player.name
+      loser = enemy.name
     } else if (enemyRoll.total > playerRoll.total) {
       playerHealth -= damage
+      winner = enemy.name
+      loser = player.name
+    } else {
+      isDraw = true
     }
 
     const newRound: Round = {
@@ -29,9 +40,16 @@ const Battle = () => {
       enemyRoll,
       playerHealth,
       enemyHealth,
+      winner,
+      loser,
+      isDraw,
     }
 
     dispatch(addNewRound(newRound))
+
+    if (enemyHealth <= 0 || playerHealth <= 0) {
+      dispatch(updateGameStage(GameStage.GAME_OVER))
+    }
   }
 
   return (

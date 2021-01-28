@@ -1,18 +1,20 @@
-import { NEW_ROUND } from './actionTypes'
+import { NEW_ROUND, RESET_BATTLE } from './actionTypes'
 
-import { BattleState, GameActions } from './types'
+import { BattleState, BattleActions } from './types'
 
 const initialState: BattleState = {
   rounds: [],
 }
 
-const reducer = (state = initialState, action: GameActions) => {
+const reducer = (state = initialState, action: BattleActions) => {
   switch (action.type) {
     case NEW_ROUND:
       return {
         ...state,
         rounds: [...state.rounds, action.payload],
       }
+    case RESET_BATTLE:
+      return initialState
     default:
       return {
         ...state,
