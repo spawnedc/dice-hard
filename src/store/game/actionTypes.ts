@@ -1,0 +1,1 @@
+export const UPDATE_STAGE = 'GAME.UPDATE_STAGE'
