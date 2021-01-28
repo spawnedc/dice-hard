@@ -1,0 +1,16 @@
+body {
+  background-color: #222;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.rpgui-progress-fill {
+  transition: width ease-out 0.3s;
+}
