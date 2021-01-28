@@ -1,5 +1,6 @@
 .Battleground {
   height: 448px;
+  padding-bottom: 0 !important; /* I hate myself for this but RPGUI overwrites this. */
   position: relative;
   width: 100%;
 
@@ -18,12 +19,16 @@
   }
 }
 
-.HealthBars {
+.Warriors {
   display: flex;
   justify-content: space-between;
-  height: 50px;
+  height: 100%;
 }
 
-.HealthBar {
+.Warrior {
   width: 48%;
+
+  &:last-child {
+    text-align: right;
+  }
 }
