@@ -13,6 +13,8 @@ export type Round = {
   winner?: string
   loser?: string
   isDraw: boolean
+  damage: number
+  timestamp: number
 }
 
 export type BattleState = {

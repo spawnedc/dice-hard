@@ -1,8 +1,9 @@
 import { useDispatch } from 'react-redux'
 import { Battleground } from '../components'
+import CombatLog from '../components/CombatLog'
 import { enemy, player } from '../constants'
 import { addNewRound } from '../store/battle/actions'
-import { useLastRound } from '../store/battle/selectors'
+import { useLastRound, useRounds } from '../store/battle/selectors'
 import { Round } from '../store/battle/types'
 import { updateGameStage } from '../store/game/actions'
 import { GameStage } from '../store/game/types'
@@ -11,6 +12,7 @@ import rollDice from '../utils/rollDice'
 const Battle = () => {
   const dispatch = useDispatch()
   const lastRound = useLastRound()
+  const rounds = useRounds()
 
   const onButtonClick = () => {
     const playerRoll = rollDice()
@@ -43,6 +45,8 @@ const Battle = () => {
       winner,
       loser,
       isDraw,
+      damage,
+      timestamp: Date.now(),
     }
 
     dispatch(addNewRound(newRound))
@@ -58,6 +62,7 @@ const Battle = () => {
       <button className="rpgui-button" type="button" onClick={onButtonClick}>
         Attack!
       </button>
+      <CombatLog rounds={rounds} />
     </>
   )
 }

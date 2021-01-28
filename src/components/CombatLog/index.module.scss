@@ -1,0 +1,11 @@
+.CombatLog {
+  flex: 1;
+  margin-top: 10px;
+  overflow: auto;
+  width: 75%;
+}
+
+.LogList {
+  display: flex;
+  flex-direction: column-reverse;
+}
