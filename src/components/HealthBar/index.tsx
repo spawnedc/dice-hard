@@ -12,7 +12,7 @@ const HealthBar = ({ className, value }: HealthBarProps) => {
   const [init, setInit] = useState(false)
 
   useEffect(() => {
-    RPGUI.set_value(healthBarRef.current, value)
+    RPGUI.set_value(healthBarRef.current, value < 0 ? 0 : value)
   }, [value])
 
   useEffect(() => {

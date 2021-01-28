@@ -1,5 +1,6 @@
 import heroImage from './img/gothic-hero-idle.png'
 import demonImage from './img/demon-idle.png'
+import gameConfig from './config'
 
 export type Contender = {
   name: string
@@ -12,7 +13,7 @@ export type Contender = {
 const player: Contender = {
   name: 'Gothic hero',
   image: heroImage,
-  health: 100,
+  health: gameConfig.playerHealth,
   height: 245,
   width: 200,
 }
@@ -20,7 +21,7 @@ const player: Contender = {
 const enemy: Contender = {
   name: 'Demon',
   image: demonImage,
-  health: 100,
+  health: gameConfig.playerHealth,
   height: 288,
   width: 306,
 }
