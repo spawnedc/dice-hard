@@ -8,7 +8,7 @@ interface HealthBarProps {
 
 const HealthBar = ({ className, value }: HealthBarProps) => {
   const style: CSSProperties = {
-    width: `${value * 100}%`,
+    width: `${Math.max(value, 0) * 100}%`,
   }
 
   return (

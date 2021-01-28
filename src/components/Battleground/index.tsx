@@ -13,11 +13,13 @@ const Battleground = () => {
           className={styles.Warrior}
           contender={player}
           health={round?.playerHealth}
+          roll={round?.playerRoll}
         />
         <Warrior
           className={styles.Warrior}
           contender={enemy}
           health={round?.enemyHealth}
+          roll={round?.enemyRoll}
         />
       </div>
     </div>

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Battleground } from '../components'
 import CombatLog from '../components/CombatLog'
@@ -11,20 +12,35 @@ const Battle = () => {
   const dispatch = useDispatch()
   const attack = useAttack()
   const rounds = useRounds()
+  const [buttonDisabled, setButtonDisabled] = useState(false)
 
   const onButtonClick = () => {
+    setButtonDisabled(true)
     const newRound = attack()
     dispatch(addNewRound(newRound))
 
-    if (newRound.enemyHealth <= 0 || newRound.playerHealth <= 0) {
-      dispatch(updateGameStage(GameStage.GAME_OVER))
+    if (newRound.isDraw) {
+      setButtonDisabled(false)
+    } else {
+      setTimeout(() => {
+        if (newRound.enemyHealth <= 0 || newRound.playerHealth <= 0) {
+          dispatch(updateGameStage(GameStage.GAME_OVER))
+        } else {
+          setButtonDisabled(false)
+        }
+      }, 2000)
     }
   }
 
   return (
     <>
       <Battleground />
-      <button className="rpgui-button" type="button" onClick={onButtonClick}>
+      <button
+        className="rpgui-button"
+        type="button"
+        onClick={onButtonClick}
+        disabled={buttonDisabled}
+      >
         Attack!
       </button>
       <CombatLog rounds={rounds} />

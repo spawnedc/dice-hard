@@ -15,3 +15,28 @@
   flex-grow: 1;
   max-width: 100%;
 }
+
+.DiceContainer {
+  display: flex;
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-200px);
+  }
+}
+
+.Damage {
+  animation-name: slide-up;
+  animation-duration: 2s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  bottom: 0;
+  font-size: 3rem !important;
+  position: absolute;
+}
