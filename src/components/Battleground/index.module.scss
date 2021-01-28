@@ -1,0 +1,18 @@
+.Battleground {
+  height: 448px;
+  position: relative;
+  width: 100%;
+
+  &::after {
+    background-image: url('./img/night-town.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
