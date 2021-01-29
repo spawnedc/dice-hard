@@ -28,7 +28,7 @@ const Battle = () => {
         } else {
           setButtonDisabled(false)
         }
-      }, 2000)
+      }, 1000)
     }
   }
 
